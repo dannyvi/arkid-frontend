@@ -1,4 +1,5 @@
 const stylelints = require('./stylelint.config')
+const path = require('path');
 
 const CONF = {
   // 是否生成 soucemap
@@ -13,7 +14,7 @@ const CONF = {
   // FE serve 是否将文件写入磁盘
   SERVE_WDISK: process.env.SERVE_WDISK === '1',
 
-  DIST_DIR: process.env.NODE_ENV === 'development' ? 'dev-s' : '_/s',
+  DIST_DIR: process.env.NODE_ENV === 'development' ? 'dev-dist' : 'dist',
 
   PAGES: {
     // OneID

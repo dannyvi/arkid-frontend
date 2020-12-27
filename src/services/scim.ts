@@ -2,7 +2,7 @@ import {http} from '@/services/base'
 
 export class ScimApp {
     static url({detail = false, id, action}: {detail?: boolean; id?: string; action?: string;} = {}) {
-        let url = '/siteapi/v1/scim'
+        let url = '/siteapi/oneid/scim'
         if (detail) {
             url += `/${id}`
         }
