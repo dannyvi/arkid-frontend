@@ -1,6 +1,6 @@
 import * as api from '@/services/oneid'
 import {FORM_RULES} from '@/utils'
-import {Form} from 'iview/types/index'
+import {Form} from 'iview'
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
 import './Layout.less'
 
@@ -234,6 +234,7 @@ export default class Layout extends Vue {
           {title: '所有账号', icon: 'allaccount', name: 'admin.account'},
           {title: '账号配置', icon: 'accountsettings', name: 'admin.account.settings'},
           {title: '账号同步', icon: 'synchronous', name: 'admin.account.thirdparty'},
+          {title: '账号供应', icon: 'add', name: 'admin.account.provision'},
         ]
       }
     }
@@ -268,6 +269,10 @@ export default class Layout extends Vue {
       ['admin.account.thirdparty', [
         {title: '账号管理', name: 'admin.account'},
         '账号同步',
+      ]],
+      ['admin.account.provision', [
+        {title: '帐号管理', name: 'admin.account'},
+        '账号供应',
       ]],
       // 分组权限管理的面包屑位置特殊，由页面自行管理
       ['admin.app.perm', [
