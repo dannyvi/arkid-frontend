@@ -45,7 +45,7 @@ import './ThirdParty.less';
               <Input v-model="form[item.key]" v-else/>
             </FormItem>
           </Form>
-          <div class="btns">
+          <div v-if="activeName !== 'SCIM协议'" class="btns">
             <Button type="primary" @click="doSave" :loading="isSaveLoading" class="submit-btn">保存配置</Button>
             <Button type="primary" @click="doImport" :loading="isImporting" class="submit-btn">开始同步</Button>
           </div>
@@ -70,6 +70,10 @@ export default class ThirdParty extends Vue {
     status: 'no'|'ok';
   }[] = [
     {icon: 'logo-github', name: '钉钉', status: 'no'},
+    {icon: 'logo-buffer', name: 'AD账号', status: 'no'},
+    {icon: 'logo-reddit', name: '企业微信', status: 'no'},
+    {icon: 'logo-dropbox', name: '数据库', status: 'no'},
+    {icon: 'ios-stats', name: 'SCIM协议', status: 'no'},
   ];
 
   form: any|null = null;
@@ -106,6 +110,80 @@ export default class ThirdParty extends Vue {
         appSecret: '',
         corpId: ding.corpId,
         corpSecret: ding.corpSecret,
+      };
+
+      this.$nextTick(() => {
+        this.fields = fields;
+        this.form = form;
+      });
+    }
+
+    if (this.activeName! === 'AD账号') {
+      const fields = [
+        {key: 'address', label: '连接地址'},
+        {key: 'account', label: '同步账户'},
+        {key: 'password', label: '密码'},
+        {key: 'mode', label: '同步模式'},
+      ];
+      const form = {
+        address: '',
+        account: '',
+        password: '',
+        mode: '',
+      };
+
+      this.$nextTick(() => {
+        this.fields = fields;
+        this.form = form;
+      });
+    }
+
+    if (this.activeName! === '企业微信') {
+      const fields = [
+        {key: 'appKey', label: 'appKey'},
+        {key: 'appSecret', label: 'appSecret'},
+        {key: 'corpId', label: 'corpId'},
+        {key: 'corpSecret', label: 'corpSecret'},
+      ];
+      const form = {
+        appKey: '',
+        appSecret: '',
+        corpId: '',
+        corpSecret: '',
+      };
+
+      this.$nextTick(() => {
+        this.fields = fields;
+        this.form = form;
+      });
+    }
+
+    if (this.activeName! === '数据库') {
+      const fields = [
+        {key: 'address', label: '连接地址'},
+        {key: 'account', label: '同步账户'},
+        {key: 'password', label: '密码'},
+        {key: 'mode', label: '同步模式'},
+      ];
+      const form = {
+        address: '',
+        account: '',
+        password: '',
+        mode: '',
+      };
+
+      this.$nextTick(() => {
+        this.fields = fields;
+        this.form = form;
+      });
+    }
+
+    if (this.activeName! === 'SCIM协议') {
+      const fields = [
+        {key: 'http', label: '接口入口'},
+      ];
+      const form = {
+        http: 'https://{localhost}/apisite/scim/v2/',
       };
 
       this.$nextTick(() => {
